@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h2 {
+    color: #333;
+}
+
+input {
+    padding: 10px;
+    margin: 8px;
+    width: 500px; /* Adjusted width to 500 pixels */
+}
+
+button {
+    padding: 10px;
+    margin-top: 10px; /* Added margin-top */
+    background-color: #FFA500; /* Changed color to orange */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #FF8C00; /* Darker shade of orange on hover */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f0f0f0;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}

@@ -1,20 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "Ask ChatGPT",
+  "name": "Translate Any Way",
   "version": "1.0.0",
-  "permissions": ["contextMenus"],
+  "permissions": ["storage"],
   "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
+    "16": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
   },
-  "background": {
-    "service_worker": "background.js"
-  },
+  "options_page": "pages/options.html", 
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": ["scripts/content.js"]
     }
   ]
 }
