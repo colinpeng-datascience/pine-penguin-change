@@ -22,6 +22,9 @@ class Conversation {
   }
 
   async sendMessage(msg) {
+    //console.log(msg);
+    return {response: {text: "fake response"}, conversationId: "fake conversation ID",
+      parentMessageId: "fake parent ID"}
     const res = await gptApi.sendMessage(
       msg,
       this.conversationId && this.parentMessageId
@@ -50,6 +53,8 @@ class Conversation {
 
 
 app.post("/", async (req, res) => {
+
+  //console.log(req)
   
   try {
     var conversation;
@@ -69,11 +74,22 @@ app.post("/", async (req, res) => {
       }
     );
 
-    console.log(`----------\n${rawReply.text}\n----------`);
-    res.json({reply: rawReply.text, conversationId: rawReply.conversationId,
+    //console.log(`----------\n${rawReply.text}\n----------`);
+    res.json({reply: rawReply.response.text, conversationId: rawReply.conversationId,
       parentMessageId: rawReply.parentMessageId});
   } catch (error) {
     console.log(error);
     res.status(500);
   }
 });
+
+async function start() {
+  await oraPromise(
+    new Promise((resolve) => app.listen(3000, () => resolve())),
+    {
+      text: `You may now use the extension`,
+    }
+  );
+}
+
+start();

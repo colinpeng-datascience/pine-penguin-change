@@ -13,7 +13,7 @@ function saveInstruction() {
         headers: {
         "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ message: instructionInput }),
     })
         .then((response) => response.json())
         .then(async (data) => {
@@ -64,8 +64,18 @@ const showLoadingCursor = () => {
     document.head.insertBefore(style, null);
   };
   
-  const restoreCursor = () => {
-    document.getElementById("cursor_wait").remove();
-  };
+const restoreCursor = () => {
+document.getElementById("cursor_wait").remove();
+};
 
+document.addEventListener('DOMContentLoaded', function() {
+// Your code to run after the DOM has loaded
+var saveButton = document.getElementById('saveButton');
+
+saveButton.addEventListener('click', function() {
+    saveInstruction();
+});
+
+displaySavedInstruction();
+});
   
