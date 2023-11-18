@@ -32,8 +32,8 @@ for (var i = 0; i < elements.length; i++) {
               .then((response) => response.json())
               .then(async (data) => {
                 // Use original text element and fallback to current active text element
-                
-                  var replacedText = `\n\n${data.reply}`
+                element.replaceChild(document.createTextNode(data.reply), node);
+                //TODO: need to save id here?
                 }
               ).catch((error) => {
                 restoreCursor();
@@ -43,7 +43,7 @@ for (var i = 0; i < elements.length; i++) {
                 throw new Error(error);
               });
               
-            element.replaceChild(document.createTextNode(replacedText), node);
+            
         }
     }
 };
