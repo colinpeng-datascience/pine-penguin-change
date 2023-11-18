@@ -21,16 +21,13 @@ function restoreTextToChange() {
  * Indicates if the given text need to be changed.
  * @param {String} text Text to inspect
  */
-function getChangedText(text) {
-    console.log("getting changed text");
+async function getChangedText(text) {
+    //console.log("getting changed text");
+    let newtext = text;
     let textWasChanged = false;
     if (typeof text == 'string') {
-        console.log(text);
         textWasChanged = true;
-        console.log("found a string");
-        console.log(text);
-        text = "ahhhh";
-        fetch("http://localhost:3000", {
+        newtext = await fetch("http://localhost:3000", {
             method: "POST",
             headers: {
             "Content-Type": "application/json",
@@ -40,8 +37,7 @@ function getChangedText(text) {
             .then((response) => response.json())
             .then(async (data) => {
             // Use original text element and fallback to current active text element
-            text = data.reply;
-            console.log(text);
+            return data.reply;
             //TODO: need to save id here?
             }
             ).catch((error) => {
@@ -51,17 +47,16 @@ function getChangedText(text) {
             throw new Error(error);
             });
     }
-
-    return [textWasChanged, text];
+    return [textWasChanged, newtext];
 }
 
 /**
  * Replaces text in common text on page.
  * @param {Node} node Node to search text to change
  */
-function replaceTextInCharacterData(node) {
+async function replaceTextInCharacterData(node) {
     let data = node.data;
-    [textWasChanged, changedText] = getChangedText(data);
+    [textWasChanged, changedText] = await getChangedText(data);
     if (textWasChanged) {
         node.replaceData(0, data.length, changedText);
     }
@@ -72,11 +67,11 @@ function replaceTextInCharacterData(node) {
  * Replaces text on input value attribute, that can be read on the page.
  * @param {Node} node Node to search text to change
  */
-function replaceTextInInputValue(node) {
+async function replaceTextInInputValue(node) {
     if (node.nodeName.toUpperCase() == 'INPUT') {
         let text = node.getAttribute('value');
 
-        [textWasChanged, changedText] = getChangedText(text);
+        [textWasChanged, changedText] = await getChangedText(text);
 
         if (textWasChanged) {
             node.setAttribute('value', changedText);
@@ -88,10 +83,10 @@ function replaceTextInInputValue(node) {
  * Replaces text on added nodes and on their children recursively.
  * @param {NodeList} nodes Nodes
  */
-function replaceTextOnNodes(nodes) {
-    nodes.forEach((node) => {
-        replaceTextInCharacterData(node);
-        replaceTextInInputValue(node);
+async function replaceTextOnNodes(nodes) {
+    nodes.forEach(async (node) => {
+        await replaceTextInCharacterData(node);
+        await replaceTextInInputValue(node);
         node.childNodes.forEach((childNode) => {
             replaceTextInCharacterData(childNode);
             replaceTextInInputValue(childNode);
@@ -121,23 +116,22 @@ function startObserving(observer) {
  * Replaces text when the page change.
  */
 function replaceTextOnPageChange() {
-    const observer = new MutationObserver(function(mutations) {
+    const observer = new MutationObserver(async function(mutations) {
         //The observer is disconnected to prevent infinite loop while changing text.
         observer.disconnect();
-    
-        mutations.forEach((mutation) => {
+        await Promise.all(mutations.map(async (mutation) => {
             switch(mutation.type) {
                 case 'childList':
-                    replaceTextOnNodes(mutation.addedNodes);
+                    await replaceTextOnNodes(mutation.addedNodes);
                     break;
                 case 'attributes':
-                    replaceTextInInputValue(mutation.target);
+                    await replaceTextInInputValue(mutation.target);
                     break;
                 case 'characterData':
-                    replaceTextInCharacterData(mutation.target);
+                    await replaceTextInCharacterData(mutation.target);
                     break;
-              }
-          });
+            }
+        }));
           
         startObserving(observer);
     });
