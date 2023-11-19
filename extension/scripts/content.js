@@ -16,6 +16,15 @@ function restoreTextToChange() {
     });    
 }
 
+function testCommonText(input) {
+    const regex = /^[^\{\}]*$/;
+    const invalidPattern = /^[\d\s\.\•\…\:\·\,\+\-\%\*\/\(\)]*$/; // Include additional characters if needed
+
+    const isSingleCharacterOrSymbol = /^[a-zA-Z!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]$/;
+    const isURL = /^(https?|http).*(\.org|\.com)$/;
+
+    return regex.test(input) && !invalidPattern.test(input) && !isSingleCharacterOrSymbol.test(input) && !isURL.test(input);
+}
 
 /**
  * Indicates if the given text need to be changed.
@@ -25,7 +34,7 @@ async function getChangedText(text) {
     //console.log("getting changed text");
     let newtext = text;
     let textWasChanged = false;
-    if (typeof text == 'string') {
+    if (typeof text == 'string' & testCommonText(text)) {
         textWasChanged = true;
         newtext = await fetch("http://localhost:3000", {
             method: "POST",
@@ -55,11 +64,12 @@ async function getChangedText(text) {
  * @param {Node} node Node to search text to change
  */
 async function replaceTextInCharacterData(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
     let data = node.data;
     [textWasChanged, changedText] = await getChangedText(data);
     if (textWasChanged) {
         node.replaceData(0, data.length, changedText);
-    }
+    }}
 }
 
 
@@ -70,7 +80,7 @@ async function replaceTextInCharacterData(node) {
 async function replaceTextInInputValue(node) {
     if (node.nodeName.toUpperCase() == 'INPUT') {
         let text = node.getAttribute('value');
-
+        console.log(text);
         [textWasChanged, changedText] = await getChangedText(text);
 
         if (textWasChanged) {
@@ -86,10 +96,10 @@ async function replaceTextInInputValue(node) {
 async function replaceTextOnNodes(nodes) {
     nodes.forEach(async (node) => {
         await replaceTextInCharacterData(node);
-        await replaceTextInInputValue(node);
+        //await replaceTextInInputValue(node);
         node.childNodes.forEach((childNode) => {
             replaceTextInCharacterData(childNode);
-            replaceTextInInputValue(childNode);
+            //replaceTextInInputValue(childNode);
             if (typeof childNode.childNodes == 'object') {
                 replaceTextOnNodes(childNode.childNodes);
             }
@@ -125,7 +135,7 @@ function replaceTextOnPageChange() {
                     await replaceTextOnNodes(mutation.addedNodes);
                     break;
                 case 'attributes':
-                    await replaceTextInInputValue(mutation.target);
+                    //await replaceTextInInputValue(mutation.target);
                     break;
                 case 'characterData':
                     await replaceTextInCharacterData(mutation.target);
