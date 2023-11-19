@@ -1,4 +1,4 @@
-# Pine Penguin Change
+# Pine Penguin Change ![alt text](https://github.com/colinpeng-datascience/internet-for-kids/blob/main/extension/assets/icon.png?raw=true)
 
 A Chrome extension that completely transform your browsing experience with ChatGPT. 
 Every text can be changed! Any way you like! All you have to do is give us a prompt and we will customize everything online for you.
