@@ -17,11 +17,12 @@ class Conversation {
   parentMessageId = null;
 
   constructor(conversationId, parentMessageId) {
-    this.conversationId = conversationId;
-    this.parentMessageId = parentMessageId;
+    this.conversationId = (conversationId)? conversationId : null;
+    this.parentMessageId = (parentMessageId)? parentMessageId : null;
   }
 
   async sendMessage(msg) {
+    //console.log(msg);
     const res = await gptApi.sendMessage(
       msg,
       this.conversationId && this.parentMessageId
@@ -51,16 +52,19 @@ class Conversation {
 
 app.post("/", async (req, res) => {
 
+  //console.log(req)
+  
   try {
     var conversation;
     if (req.body.conversationId && req.body.parentMessageId){
-      conversation = new Conversation(req.body.conversationId, req.body.parentMessageId)
+      conversation = new Conversation(req.body.conversationId, req.body.parentMessageId);
     } else{
-      conversation = new Conversation()
+      conversation = new Conversation(null, null);
       req.body.message = "In this conversation, I will send you text from multiple websites."+
-        " Transform them according to the following rules. The text could be one single word or a paragraph."+
-        " Not everything have to be transformed. Make the output at most roughly the same length as the input when show on the website."
-        " Rules: \n" + req.body.message
+        " Transform them according to the following rules. \n" + req.body.message + 
+        " \nThe text could be one single word or a paragraph." +
+        " Not everything have to be transformed. " + 
+        "Make the output at most roughly the same length as the input."
     }
 
     const rawReply = await oraPromise(
@@ -70,6 +74,8 @@ app.post("/", async (req, res) => {
       }
     );
 
+    //console.log(`----------\n${rawReply.text}\n----------`);
+    //console.log(rawReply);
     res.json({reply: rawReply.text, conversationId: rawReply.conversationId,
       parentMessageId: rawReply.parentMessageId});
   } catch (error) {

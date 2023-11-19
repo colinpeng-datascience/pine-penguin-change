@@ -22,7 +22,7 @@ function testCommonText(input) {
     return regex.test(input) && !invalidPattern.test(input) && !isSingleCharacterOrSymbol.test(input) && !isURL.test(input);
 }
 
-async function transformText(text) {
+async function fetchTransformedText(text) {
     let newtext = text;
     let textWasChanged = false;
     if (typeof text == 'string' & testCommonText(text)) {
@@ -36,7 +36,8 @@ async function transformText(text) {
         })
             .then((response) => response.json())
             .then(async (data) => {
-            return data.reply;
+                console.log(data);
+                return data.reply;
             }
             ).catch((error) => {
             alert(
@@ -48,51 +49,50 @@ async function transformText(text) {
     return [textWasChanged, newtext];
 }
 
-async function transformTextInTextNode(node) {
+async function transformTextNode(node) {
     if (node.nodeType === Node.TEXT_NODE) {
     let data = node.data;
-    [textWasChanged, changedText] = await transformText(data);
+    [textWasChanged, changedText] = await fetchTransformedText(data);
     if (textWasChanged) {
         node.replaceData(0, data.length, changedText);
     }}
 }
 
 
-async function transformTextOnNodes(nodes) {
+async function transformNodes(nodes) {
     nodes.forEach(async (node) => {
-        await transformTextInTextNode(node);
+        await transformTextNode(node);
         node.childNodes.forEach((childNode) => {
-            transformTextInTextNode(childNode);
+            transformTextNode(childNode);
             if (typeof childNode.childNodes == 'object') {
-                transformTextOnNodes(childNode.childNodes);
+                transformNodes(childNode.childNodes);
             }
         });
     });
 }
 
-function transformTextOnPageLoad() {
-    transformTextOnNodes(document.querySelectorAll('body'));
+function transformOnPageLoad() {
+    transformNodes(document.querySelectorAll('body'));
 }
 
 function startObserving(observer) {
     observer.observe(document.body, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter:  ["value"]});
 }
 
-function transformTextOnPageChange() {
+function transformOnPageChange() {
     const observer = new MutationObserver(async function(mutations) {
         //prevent infinite loop, await is also important here for the same purpose
         observer.disconnect();
         await Promise.all(mutations.map(async (mutation) => {
             switch(mutation.type) {
                 case 'childList':
-                    await transformTextOnNodes(mutation.addedNodes);
+                    await transformNodes(mutation.addedNodes);
                     break;
                 case 'characterData':
-                    await transformTextInCharacterData(mutation.target);
+                    await transformTextNode(mutation.target);
                     break;
             }
         }));
-          
         startObserving(observer);
     });
     
@@ -102,8 +102,8 @@ function transformTextOnPageChange() {
 getConversationId()
 
 .then(function() {
-    transformTextOnPageLoad();
-    transformTextOnPageChange();
+    transformOnPageLoad();
+    transformOnPageChange();
 })
 
 .catch(function() {});
