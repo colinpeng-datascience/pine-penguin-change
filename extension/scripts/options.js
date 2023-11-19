@@ -81,7 +81,7 @@ document.getElementById("cursor_wait").remove();
 }
 catch (error) {
     console.log(error);
-};
+};}
 
 document.addEventListener('DOMContentLoaded', function() {
 // Your code to run after the DOM has loaded
@@ -93,4 +93,3 @@ saveButton.addEventListener('click', function() {
 
 displaySavedInstruction();
 });
-  
