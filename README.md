@@ -34,8 +34,10 @@ Add the extension
 
 1. Go to the option page by right click on the logo and click option
 2. Input how you would like your website contents to be changed.
-    example prompt could be `Make things more suitable to teenagers.` 
-3. Start browsing regularly and enjoy the transformation.
+    example prompt could be 
+    
+    `Make things more suitable to teenagers.` 
+3. Start browsing regularly and enjoy the customized experience.
 4. If you wish to stop, come back to the option page and clear the prompt.
 
 ## Troubleshooting
