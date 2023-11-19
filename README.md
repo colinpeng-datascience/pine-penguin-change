@@ -37,7 +37,7 @@ You'll now see "Ask ChatGPT" if you right click in any text input or content edi
 
 If ChatGPT is taking a very long time to respond or not responding at all then it could mean that their servers are currently overloaded. You can confirm this by going to [chat.openai.com/chat](https://chat.openai.com/chat) and seeing whether their website works directly.
 
-## Plugins
+## Prompts
 
 Plugins have the ability to inform ChatGPT of specific conversation rules and parse replies from ChatGPT before they are sent to the browser.
 
@@ -53,4 +53,4 @@ Huge thanks to <a href="https://twitter.com/transitive_bs">Travis Fischer</a> fo
 
 ## License
 
-MIT © Gabe Ragland (follow me on <a href="https://twitter.com/gabe_ragland">Twitter</a>)
+MIT © Pine Peng (follow me on <a href="https://twitter.com/gabe_ragland">Twitter</a>)

@@ -22,7 +22,6 @@ class Conversation {
   }
 
   async sendMessage(msg) {
-    //console.log(msg);
     const res = await gptApi.sendMessage(
       msg,
       this.conversationId && this.parentMessageId
@@ -52,8 +51,6 @@ class Conversation {
 
 app.post("/", async (req, res) => {
 
-  //console.log(req)
-  
   try {
     var conversation;
     if (req.body.conversationId && req.body.parentMessageId){
@@ -62,6 +59,7 @@ app.post("/", async (req, res) => {
       conversation = new Conversation()
       req.body.message = "In this conversation, I will send you text from multiple websites."+
         " Transform them according to the following rules. The text could be one single word or a paragraph."+
+        " Not everything have to be transformed. Make the output at most roughly the same length as the input when show on the website."
         " Rules: \n" + req.body.message
     }
 
@@ -72,8 +70,6 @@ app.post("/", async (req, res) => {
       }
     );
 
-    //console.log(`----------\n${rawReply.text}\n----------`);
-    //console.log(rawReply);
     res.json({reply: rawReply.text, conversationId: rawReply.conversationId,
       parentMessageId: rawReply.parentMessageId});
   } catch (error) {

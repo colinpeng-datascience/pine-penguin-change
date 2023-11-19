@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Translate Any Way",
+  "name": "Pine Penguin Change",
   "version": "1.0.1",
   "permissions": ["storage"],
   "icons": {
@@ -8,7 +8,9 @@
     "48": "assets/icon.png",
     "128": "assets/icon.png"
   },
+  "description":"Transform all texts online through ChatGPT according to your need.",
   "options_page": "pages/options.html", 
+  "homepage_url":"https://github.com/colinpeng-datascience/internet-for-kids",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
