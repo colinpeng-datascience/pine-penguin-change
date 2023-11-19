@@ -1,8 +1,7 @@
-# ChatGPT Chrome Extension 🤖 ✨
+# Pine Penguin Change
 
-A Chrome extension that adds [ChatGPT](https://chat.openai.com) to every text box on the internet! Use it to write tweets, revise emails, fix coding bugs, or whatever else you need, all without leaving the site you're on. Includes a plugin system for greater control over ChatGPT behavior and ability to interact with 3rd party APIs.
-
-![](https://i.imgur.com/CPMOyG7.gif)
+A Chrome extension that completely transform your browsing experience with ChatGPT. 
+Every text can be changed! Any way you like! 
 
 ## Install
 
@@ -31,7 +30,13 @@ Add the extension
 3. Click "Load Unpacked" to see a file-selection dialog
 4. Select your local `chatgpt-chrome-extension/extension` directory
 
-You'll now see "Ask ChatGPT" if you right click in any text input or content editable area.
+## User Guide
+
+1. Go to the option page by right click on the logo and click option
+2. Input how you would like your website contents to be changed.
+    example prompt could be `Make things more suitable to teenagers.` 
+3. Start browsing regularly and enjoy the transformation.
+4. If you wish to stop, come back to the option page and clear the prompt.
 
 ## Troubleshooting
 
@@ -39,18 +44,18 @@ If ChatGPT is taking a very long time to respond or not responding at all then i
 
 ## Prompts
 
-Plugins have the ability to inform ChatGPT of specific conversation rules and parse replies from ChatGPT before they are sent to the browser.
+There are tons of different options. The only limit is your imagenation! 
 
-[Default](/plugins/Default.js) - Sets some default conversation rules 🧑‍🏫
-
-[Image](/plugins/Image.js) - Tells ChatGPT to describe things visually when asked for an image and then replaces the description with a matching AI generated image from [Lexica](http://lexica.art) 📸
-
-Your really cool plugin - Go make a plugin, do a pull-request and I'll add it the list 🤝
+Example prompt could be: 
+`Make things more suitable to teenagers.` 
+`Rewrite in grade 10 level vocabulary.` 
+`Make everything funny.` 
+`Change everything to Chinese` 
 
 ## Related
-
+Huge thanks to <a href="https://twitter.com/gabe_ragland">Gabe</a> for creating [ChatGPT Chrome Extension](https://github.com/gragland/chatgpt-chrome-extension)
 Huge thanks to <a href="https://twitter.com/transitive_bs">Travis Fischer</a> for creating [chatgpt-api](https://github.com/transitive-bullshit/chatgpt-api)
 
 ## License
 
-MIT © Pine Peng (follow me on <a href="https://twitter.com/gabe_ragland">Twitter</a>)
+MIT © Pine Peng (follow me on <a href="https://github.com/colinpeng-datascience">Github</a>)
