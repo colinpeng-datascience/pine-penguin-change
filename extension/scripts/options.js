@@ -76,7 +76,11 @@ const showLoadingCursor = () => {
   };
   
 const restoreCursor = () => {
+try{
 document.getElementById("cursor_wait").remove();
+}
+catch (error) {
+    console.log(error);
 };
 
 document.addEventListener('DOMContentLoaded', function() {
