@@ -47,13 +47,18 @@ If ChatGPT is taking a very long time to respond or not responding at all then i
 There are tons of different options. The only limit is your imagenation! 
 
 Example prompt could be: 
+
 `Make things more suitable to teenagers.` 
+
 `Rewrite in grade 10 level vocabulary.` 
+
 `Make everything funny.` 
+
 `Change everything to Chinese` 
 
 ## Related
 Huge thanks to <a href="https://twitter.com/gabe_ragland">Gabe</a> for creating [ChatGPT Chrome Extension](https://github.com/gragland/chatgpt-chrome-extension)
+
 Huge thanks to <a href="https://twitter.com/transitive_bs">Travis Fischer</a> for creating [chatgpt-api](https://github.com/transitive-bullshit/chatgpt-api)
 
 ## License
