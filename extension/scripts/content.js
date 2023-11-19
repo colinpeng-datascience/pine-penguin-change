@@ -16,7 +16,7 @@ function testCommonText(input) {
     const regex = /^[^\{\}]*$/;
     const invalidPattern = /^[\d\s\.\•\…\:\·\,\+\-\%\*\/\(\)]*$/; // Include additional characters if needed
 
-    const isSingleCharacterOrSymbol = /^[a-zA-Z!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]$/;
+    const isSingleCharacterOrSymbol = /^\s*[^\u4e00-\u9fa5]?\s*$/;
     const isURL = /^(https?|http).*(\.org|\.com)$/;
 
     return regex.test(input) && !invalidPattern.test(input) && !isSingleCharacterOrSymbol.test(input) && !isURL.test(input);

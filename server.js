@@ -9,7 +9,8 @@ import { oraPromise } from "ora";
 const app = express().use(cors()).use(bodyParser.json());
 
 const gptApi = new ChatGPTAPI({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY, 
+  assistantLabel: "Website Transformer"
 });
 
 class Conversation {
@@ -60,11 +61,10 @@ app.post("/", async (req, res) => {
       conversation = new Conversation(req.body.conversationId, req.body.parentMessageId);
     } else{
       conversation = new Conversation(null, null);
-      req.body.message = "In this conversation, I will send you text from multiple websites."+
-        " Transform them according to the following rules. \n" + req.body.message + 
-        " \nThe text could be one single word or a paragraph." +
-        " Not everything have to be transformed. " + 
-        "Make the output at most roughly the same length as the input."
+      req.body.message = "Instruction: I will send you text from multiple websites. Transform them according to the following rules \n" +
+       req.body.message + "What I send you could have one or more words. Your reply should have the same amount of words as what I send you." + 
+       "Not everything has to be changed, if the text is already satisfying the rules, output the original text."+
+        "\nYour reply should have the same amount of words as what I send you."
     }
 
     const rawReply = await oraPromise(

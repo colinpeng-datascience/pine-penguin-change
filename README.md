@@ -5,6 +5,8 @@
 A Chrome extension that completely transform your browsing experience with ChatGPT. 
 Every text can be changed! Any way you like! All you have to do is give us a prompt and we will customize everything online for you.
 
+![alt text](https://github.com/colinpeng-datascience/pine-penguin-change/blob/main/extension/assets/demo.gif?raw=true)
+
 ## Install
 
 First clone this repo on your local machine
