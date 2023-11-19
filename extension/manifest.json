@@ -10,7 +10,7 @@
   },
   "description":"Transform all texts online through ChatGPT according to your need.",
   "options_page": "pages/options.html", 
-  "homepage_url":"https://github.com/colinpeng-datascience/internet-for-kids",
+  "homepage_url":"https://github.com/colinpeng-datascience/pine-penguin-change",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

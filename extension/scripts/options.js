@@ -36,7 +36,7 @@ function saveInstruction() {
             ).catch((error) => {
             restoreCursor();
             alert(
-                "Error. Make sure you're running the server by following the instructions on https://github.com/colinpeng-datascience/internet-for-kids. Also make sure you don't have an adblocker preventing requests to localhost:3000."
+                "Error. Make sure you're running the server by following the instructions on https://github.com/colinpeng-datascience/pine-penguin-change. Also make sure you don't have an adblocker preventing requests to localhost:3000."
             );
             throw new Error(error);
             });
