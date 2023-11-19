@@ -1,7 +1,7 @@
 # Pine Penguin Change
 
 A Chrome extension that completely transform your browsing experience with ChatGPT. 
-Every text can be changed! Any way you like! 
+Every text can be changed! Any way you like! All you have to do is give us a prompt and we will customize everything online for you.
 
 ## Install
 
