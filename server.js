@@ -22,7 +22,7 @@ class Conversation {
   }
 
   async sendMessage(msg) {
-    //console.log(msg);
+
     const res = await gptApi.sendMessage(
       msg,
       this.conversationId && this.parentMessageId
@@ -52,7 +52,7 @@ class Conversation {
 
 app.post("/", async (req, res) => {
 
-  //console.log(req)
+
   
   try {
     var conversation;
@@ -74,8 +74,6 @@ app.post("/", async (req, res) => {
       }
     );
 
-    //console.log(`----------\n${rawReply.text}\n----------`);
-    //console.log(rawReply);
     res.json({reply: rawReply.text, conversationId: rawReply.conversationId,
       parentMessageId: rawReply.parentMessageId});
   } catch (error) {
