@@ -64,10 +64,13 @@ Example prompt could be:
 `Change everything to Chinese` 
 
 ## Related
-Huge thanks to <a href="https://twitter.com/gabe_ragland">Gabe</a> for creating [ChatGPT Chrome Extension](https://github.com/gragland/chatgpt-chrome-extension)
+Huge thanks to <a href="https://twitter.com/gabe_ragland">Gabe</a> for creating [chatgpt-chrome-extension](https://github.com/gragland/chatgpt-chrome-extension)
+
+Huge thanks to <a href="https://www.linkedin.com/in/marcioggs/">
+Márcio Gabriel</a> for creating [text-changer-chrome-extension](https://github.com/marcioggs/text-changer-chrome-extension)
 
 Huge thanks to <a href="https://twitter.com/transitive_bs">Travis Fischer</a> for creating [chatgpt-api](https://github.com/transitive-bullshit/chatgpt-api)
 
 ## License
 
-MIT © Pine Peng (follow me on <a href="https://github.com/colinpeng-datascience">Github</a>)
+MIT © Pine Peng (follow me on <a href="https://github.com/colinpeng-datascience">Github</a> <a href="https://www.linkedin.com/in/yi-wei-peng/">Linkedin</a>)
