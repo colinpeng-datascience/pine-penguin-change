@@ -59,9 +59,11 @@ Example prompt could be:
 
 `Change everything to Chinese` 
 
-## Contributing
+## Contributing and Feature Request
 
 We welcome contributions from the community! If you're interested in contributing to Pine Penguin Change, feel free to fork, develop, and then open a pull request.
+
+For feature request and discussion on how to implement them, let's [open a discussion](https://github.com/colinpeng-datascience/pine-penguin-change/discussions)
 
 ## Bug Reports and Troubleshooting
 
