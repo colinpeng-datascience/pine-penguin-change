@@ -45,10 +45,6 @@ Add the extension
 3. Start browsing regularly and enjoy the customized experience.
 4. If you wish to stop, come back to the option page and clear the prompt.
 
-## Troubleshooting
-
-If ChatGPT is taking a very long time to respond or not responding at all then it could mean that their servers are currently overloaded. You can confirm this by going to [chat.openai.com/chat](https://chat.openai.com/chat) and seeing whether their website works directly.
-
 ## Prompts
 
 There are tons of different options. The only limit is your imagenation! 
@@ -62,6 +58,16 @@ Example prompt could be:
 `Make everything funny.` 
 
 `Change everything to Chinese` 
+
+## Contributing
+
+We welcome contributions from the community! If you're interested in contributing to Pine Penguin Change, feel free to fork, develop, and then open a pull request:
+
+### Bug Reports and Troubleshooting
+
+If you come across a bug, please [open an issue](https://github.com/colinpeng-datascience/pine-penguin-change/issues) on GitHub. We appreciate detailed bug reports that include steps to reproduce the issue.
+
+If ChatGPT is taking a very long time to respond or not responding at all then it could mean that their servers are currently overloaded. You can confirm this by going to [chat.openai.com/chat](https://chat.openai.com/chat) and seeing whether their website works directly.
 
 ## Related
 Huge thanks to <a href="https://twitter.com/gabe_ragland">Gabe</a> for creating [chatgpt-chrome-extension](https://github.com/gragland/chatgpt-chrome-extension)
