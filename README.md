@@ -61,7 +61,7 @@ Example prompt could be:
 
 ## Contributing
 
-We welcome contributions from the community! If you're interested in contributing to Pine Penguin Change, feel free to fork, develop, and then open a pull request:
+We welcome contributions from the community! If you're interested in contributing to Pine Penguin Change, feel free to fork, develop, and then open a pull request.
 
 ## Bug Reports and Troubleshooting
 
