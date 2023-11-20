@@ -63,7 +63,7 @@ Example prompt could be:
 
 We welcome contributions from the community! If you're interested in contributing to Pine Penguin Change, feel free to fork, develop, and then open a pull request:
 
-### Bug Reports and Troubleshooting
+## Bug Reports and Troubleshooting
 
 If you come across a bug, please [open an issue](https://github.com/colinpeng-datascience/pine-penguin-change/issues) on GitHub. We appreciate detailed bug reports that include steps to reproduce the issue.
 
