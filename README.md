@@ -1,4 +1,4 @@
-# Pine Penguin Change 
+# Pine Penguin Change (Browse.AI)
 
 ![alt text](https://github.com/colinpeng-datascience/pine-penguin-change/blob/main/extension/assets/icon.png)
 
